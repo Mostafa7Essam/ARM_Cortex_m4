@@ -12,12 +12,13 @@
 
 typedef struct
 {
-	u32 MODER  ; // to set the mode of any pin
-	u32 OTYPER ; // to set the type of output pins (pp/od)
-	u32 OSPEEDR; // to set the speed of output pins
-	u32 PUPDR  ; // to set whether  pull up or pull down input
-	u32 IDR    ; // to get the value of the input pin
-	u32 ODR    ; // to set the output value
+	volatile u32 MODER  ; // to set the mode of any pin
+	volatile u32 OTYPER ; // to set the type of output pins (pp/od)
+	volatile u32 OSPEEDR; // to set the speed of output pins
+	volatile u32 PUPDR  ; // to set whether  pull up or pull down input
+	volatile u32 IDR    ; // to get the value of the input pin
+	volatile u32 ODR    ; // to set the output value
+	volatile u32 BSRR   ; //
 
 }GPIO_REG_T;
 
