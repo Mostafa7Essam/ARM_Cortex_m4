@@ -1,56 +1,70 @@
-#ifndef RCC_INTERFACE_H_
-#define RCC_INTERFACE_H_
-#include "../../LIB/STD_TYPES.h"
-typedef enum {
-    OK,
-    WRONG_BusID
-}ERROR_STAT_type;
-/***************interfacing macros*****************/
-#define RCC_AHB1           1
-#define RCC_AHB2           2
-#define RCC_APB1           3
-#define RCC_APB2           4
-/***************RCC AHB1 peripherals macros******************/
-#define GPIO_PORT_A         0
-#define GPIO_PORT_B         1
-#define GPIO_PORT_C         2
 
+#ifndef RCC_INTERFACE_H
+#define RCC_INTERFACE_H
 
-/***************RCC AHB2 peripherals macros******************/
-#define  OTGFS              7
+/*************************************************************************/
+/**************************Interfacing Macros*****************************/
+/*************************************************************************/
 
-/***************RCC APB1 peripherals macros******************/
-#define TIMER_2             0
-#define TIMER_3             1
-#define TIMER_4             2
-#define TIMER_5             3
-#define WWDG                11
-#define SPI_2               14
-#define SPI_3               15
-#define USART_2             17
-#define I2C_1               21
-#define I2C_2               22
-#define I2C_3               23
-#define PWR                 28
+/*Bus Macros*/
+#define RCC_AHB1	1
+#define RCC_AHB2	2
+#define RCC_APB1	3
+#define RCC_APB2	4
 
-/***************RCC APB2 peripherals macros******************/
-#define TIMER_1             0
-#define USART_1             4
-#define USART_6             5
-#define ADC_1               3
-#define SDIO                11
-#define SPI_1               12
-#define SPI_4               13
-#define SYSCFG              14
-#define TIMER_9             16
-#define TIMER_10            17
-#define TIMER_11            18
+/*Peripheral Macros*/
+/*AHB1ENR Peripherals*/
+#define RCC_GPIOAEN 0
+#define RCC_GPIOBEN 1
+#define RCC_GPIOCEN 2
+#define RCC_GPIODEN 3
+#define RCC_GPIOEEN 4
+#define RCC_GPIOHEN 7
+#define RCC_CRCEN   12
+#define RCC_DMA1EN  21
+#define RCC_DMA2EN  22
 
-/*this funcution enable peripheral based on bus and the name of peripheral */
-ERROR_STAT_type RCC_voidEnablePeripheralClock(u8 copy_u8BusID,u8 copy_u8PeripheralID);
-/*this funcution disable peripheral based on bus and the name of peripheral */
-ERROR_STAT_type RCC_voidDisablePeripheralClock(u8 copy_u8BusID,u8 copy_u8PeripheralID);
-/*this funcution determine system clock */
+/*AHB2ENR Peripherals*/
+#define RCC_OTGFSEN 7
+
+/*APB1ENR Peripherals*/
+#define RCC_TIM2EN	 62
+#define RCC_TIM3EN	 63
+#define RCC_TIM4EN	 64
+#define RCC_TIM5EN	 65
+#define RCC_WWDGEN	 73
+#define RCC_SPI2EN	 76
+#define RCC_SPI3EN	 77
+#define RCC_USART2EN 79
+#define RCC_I2C1EN	 83
+#define RCC_I2C2EN	 84
+#define RCC_I2C3EN	 85
+#define RCC_PWREN	 90
+
+/*APB2ENR Peripherals*/
+#define RCC_TIM1EN	  93
+#define RCC_USART1EN  97
+#define RCC_USART6EN  98
+#define RCC_ADC1EN	  101
+#define RCC_SDIOEN	  104
+#define RCC_SPI1EN	  105
+#define RCC_SPI4EN	  106
+#define RCC_SYSCFGEN  107
+#define RCC_TIM9EN	  109
+#define RCC_TIM10EN	  110
+#define RCC_TIM11EN	  111
+
+/*************************************************************************/
+/************************Functions' prototypes****************************/
+/*************************************************************************/
+
+/*This Function Shall Initialize the RCC peripheral*/
 void RCC_voidSetSystemClock(void);
+
+/*This Function Shall Enable a Specific Peripheral*/
+u8 RCC_u8EnablePeripheralClock(u8 Copy_u8BusID , u8 Copy_u8PeripheralID);
+
+/*This Function Shall Disable a Specific Peripheral*/
+void RCC_voidDisablePeripheralClock(u8 Copy_u8BusID , u8 Copy_u8PeripheralID);
 
 #endif
